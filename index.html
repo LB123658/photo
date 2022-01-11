@@ -137,7 +137,7 @@ filter: blur(35px);
   <h2 onclick="notify('Last updated: January 10, 2022');">Photo editor</h2>
   <div id="container">
     <input type="text" id="url" placeholder="Image URL" autocomplete="off" onkeyup="setUrl()"></input>
-    <input type="text" id="saturation" placeholder="Saturation" autocomplete="off"></input>  
+    <input type="text" id="saturation" placeholder="Saturation" autocomplete="off" onkeyup="setSat()"></input>  
   </div>
 </div>
 <img id="img"></img>
@@ -154,6 +154,7 @@ var img = document.getElementById("img");
 var backBlur = document.getElementById("backBlur");
 //controls
 var urlInput = document.getElementById("url");
+var satInput = document.getElementById("saturation");
 
 function clo() {
 block.style.visibility = "hidden";
@@ -178,6 +179,9 @@ document.body.onresize = function() {resize(); };
 function setUrl() {
 img.src = urlInput.value;
 backBlur.src = urlInput.value;
+}
+function setSat() {
+img.style.filter = "grayscale('" + satInput.value + "%')";
 }
 </script>
 </body>
