@@ -10,7 +10,7 @@
 <style>
 body {
 background: white;
-overflow-x: hidden;
+overflow: hidden;
 }
 * {
 font-family: 'Montserrat', sans-serif;
@@ -82,6 +82,27 @@ transition: transform 0.2s;
 }
 #controls h2:hover {
 transform: scale(1.05);
+cursor: pointer;
+}
+#container {
+width: 180px;
+margin-left: 10px;
+height: 400px;
+overflow-x: hidden;
+}
+#container input {
+background: transparent;
+border: 2px solid white;
+border-color: #5765f2 #5765f2 white #5765f2;
+color: white;
+height: 30px;
+font-size: 18px;
+width: 100%;
+text-align: center;
+margin-bottom: 10px;
+}
+#container input::placeholder {
+color: #d3def2;
 }
 #img {
 position: absolute;
@@ -92,26 +113,47 @@ background-image: url("https://media1.tenor.com/images/9d1ce360e6b0f62e66cfc2ac0
 background-repeat: no-repeat;
 background-position: center center;
 }
+#backBlur {
+position: absolute;
+top: 0px;
+left: 0px;
+width: 100%;
+height: 100%;
+z-index: -1;
+filter: blur(35px);
+}
 </style>
 </head>
 <body>
 <!-- alert div -->
 <div id="block"></div>
 <div id="notice">
-  <span id="text">This came up by accident.</span>
+  <span id="text">Welcome to the photo editor.</span>
   <button class="button" id="continue" onclick="clo()">Continue</button>
 </div>
 
 <!-- photo editing part -->
 <div id="controls">
-<h2>Photo editor</h2>
+  <h2 onclick="notify('Last updated: January 10, 2022');">Photo editor</h2>
+  <div id="container">
+    <input type="text" id="url" placeholder="Image URL" autocomplete="off" onkeyup="setUrl()"></input>
+    <input type="text" id="saturation" placeholder="Saturation" autocomplete="off"></input>  
+  </div>
 </div>
 <img id="img"></img>
+
+<!-- blurred background -->
+<img id="backBlur"></img>
 <script>
+// alerts
 var block = document.getElementById("block");
 var notice = document.getElementById("notice");
 var text = document.getElementById("text");
 var img = document.getElementById("img");
+// image and background
+var backBlur = document.getElementById("backBlur");
+//controls
+var urlInput = document.getElementById("url");
 
 function clo() {
 block.style.visibility = "hidden";
@@ -132,6 +174,11 @@ img.style.height = h + "px";
 }
 resize();
 document.body.onresize = function() {resize(); };
+
+function setUrl() {
+img.src = urlInput.value;
+backBlur.src = urlInput.value;
+}
 </script>
 </body>
 </html>
