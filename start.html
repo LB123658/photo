@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Photo editor - Get started</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+<link rel='icon' href='https://lb123658.github.io/galaxy/favicon.png' type='image/png'/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Icons" rel="stylesheet">
+<style>
+body {
+background: white;
+overflow-x: hidden;
+text-align: center;
+}
+* {
+font-family: 'Montserrat', sans-serif;
+user-select: none;
+-webkit-user-select: none;
+}
+input {
+-webkit-user-select: auto;
+}
+:focus {
+outline: none;
+}
+#background {
+position: fixed;
+top: 0px;
+left: 0px;
+min-width: 100%;
+min-height: 100%;
+z-index: -1;
+}
+h2 {
+color: white;
+font-weight: bold;
+font-size: 90px;
+position: absolute;
+top: 70%;
+}
+button {
+height: 50px;
+padding: 00px 20px 0px 20px;
+background: rgba(0, 0, 0, 0.6);
+color: white;
+font-size: 25px;
+border: 2px solid white;
+border-radius: 2px;
+transition: transform 0.3s;
+margin: 10px;
+}
+button:hover {
+transform: scale(1.05);
+cursor: pointer;
+}
+button:focus {
+background: #5765f2;
+color: white;
+}
+#content {
+position: absolute;
+top: 100%;
+left: 1%;
+width: 98%;
+text-align: left;
+}
+span {
+float: left;
+margin-right: 20px;
+margin-top: 3px;
+}
+#text {
+width: 60%;
+background: rgba(0, 0, 0, 0.6);
+color: white;
+font-size: 25px;
+padding: 20px;
+margin: 10px;
+max-width: 600px;
+}
+</style>
+</head>
+<body>
+<!-- background image -->
+<img id="background" src="https://lb123658.github.io/photo/images/city.png"></img>
+
+<h2>Photo Editor</h2>
+
+<div id="content">
+<button onclick="app()"><span class="material-icons">launch</span> Open</button>
+<button onclick="web()"><span class="material-icons">public</span>Website</button>
+<a href="https://lb123658.github.io/photo" download>
+<button><span class="material-icons">save_alt</span>Download</button></a>
+<br><br><br>
+<div id="text">Free online photo editor. Edit and save photos for free and use them online. No account needed, just click the button above to get started. More features coming soon...</div>
+</div>
+
+<script>
+function app() {
+window.open("https://lb123658.github.io/photo/", "_blank", "toolbar=no, status=no, titlebar=no, scrollbars=yes,resizable=yes,top=50,left=50,width=1200,height=700");
+}
+function web() {
+window.open("https://lb123658.github.io/photo","_blank");
+}
+var img = document.getElementById("background");
+var x = Math.random()
+if (x > 0 && x < 0.3) {
+img.src = "https://lb123658.github.io/photo/images/city.png";
+} else if (x > 0.3 && x < 0.6) {
+img.src = "https://lb123658.github.io/photo/images/water.png";
+} else if (x > 0.6 && x < 1) {
+img.src = "https://lb123658.github.io/photo/images/coast.png";
+}
+</script>
+</body>
+</html>
