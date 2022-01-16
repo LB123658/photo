@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Photo - embed</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+<link rel='icon' href='https://lb123658.github.io/galaxy/favicon.png' type='image/png'/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Icons" rel="stylesheet">
+<style>
+body {
+background: white;
+text-align: center;
+}
+body:hover button {
+visibility: visible;
+}
+* {
+font-family: 'Montserrat', sans-serif;
+user-select: none;
+-webkit-user-select: none;
+}
+input {
+-webkit-user-select: auto;
+}
+:focus {
+outline: none;
+}
+#img {
+position: absolute;
+top: 0px;
+left: 0px;
+height: 100%;
+width: 100%;
+background-image: url("https://media1.tenor.com/images/9d1ce360e6b0f62e66cfc2ac0986ef5c/tenor.gif");
+background-repeat: no-repeat;
+background-position: center center;
+}
+button {
+z-index: 1;
+position: absolute;
+top: 5px;
+right: 5px;
+height: 40px;
+width: 40px;
+border-radius: 2px;
+background: rgba(0, 0, 0, 0.6);
+color: white;
+border: none;
+cursor: pointer;
+visibility: hidden;
+}
+</style>
+</head>
+<body>
+<img src="https://media1.tenor.com/images/9d1ce360e6b0f62e66cfc2ac0986ef5c/tenor.gif" id="img"></img>
+<button onclick="openImage()" title="Open image"><span class="material-icons">launch</span></button>
+<script>
+var img = document.getElementById("img");
+img.src = location.search.split("url=")[1].split("&")[0];
+img.style.filter = location.search.split("filter=")[1].replace(/%20/gi, " ");
+
+function openImage() {
+window.open("https://lb123658.github.io/photo/image?" + location.search.split("?")[1], "_blank");
+}
+</script>
+</body>
+</html>
