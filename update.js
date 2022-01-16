@@ -1,6 +1,6 @@
 var updated = "no";
 
-if (window.location.href == ("https://lb123658.github.io/photo/");
+if (window.location.href == ("https://lb123658.github.io/photo/")) {
     console.log("Online version");
 } else {
   prompt();
