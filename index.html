@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -48,6 +49,7 @@ height: 100%;
 background: #282828;
 opacity: 0.5;
 z-index: 1;
+visibility: hidden;
 }
 #notice {
 width: 400px;
@@ -59,6 +61,7 @@ background: white;
 z-index: 2;
 padding: 20px 0px 0px 0px;
 border-radius: 15px;
+visibility: hidden;
 }
 #notice * {
 margin: 20px;
@@ -83,6 +86,12 @@ transition: transform 0.2s;
 #controls h2:hover {
 transform: scale(1.05);
 cursor: pointer;
+}
+#controls button {
+width: 180px;
+margin-left: 10px;
+height: 30px;
+margin-top: 10px;
 }
 #container {
 width: 180px;
@@ -122,6 +131,19 @@ height: 100%;
 z-index: -1;
 filter: blur(35px);
 }
+#hover {
+padding: 0px 10px 0px 10px;
+height: 35px;
+background: rgba(0, 0, 0, 0.5);
+border-radius: 7px;
+color: white;
+z-index: 2;
+transition: top 0.3s;
+visibility: hidden;
+position: absolute;
+border: none;
+font-size: 17px;
+}
 </style>
 </head>
 <body>
@@ -134,12 +156,27 @@ filter: blur(35px);
 
 <!-- photo editing part -->
 <div id="controls">
-  <h2 onclick="notify('Last updated: January 10, 2022');">Photo editor</h2>
+  <h2 onclick="notify('Last updated: January 15, 2022');">Photo editor</h2>
   <div id="container">
-    <input type="text" id="url" placeholder="Image URL" autocomplete="off" onkeyup="setUrl()"></input>
-    <input type="text" id="saturation" placeholder="Saturation" autocomplete="off" onkeyup="setSat()"></input>  
+    <input type="text" id="url" placeholder="Image URL" autocomplete="off" onkeyup="setUrl()" onmouseover="hover('Image URL','65px')" onmouseout="unhover()" title="Image URL"></input>
+    <input type="text" id="greyscale" placeholder="Greyscale" autocomplete="off" onkeyup="setEdits()" onmouseover="hover('Greyscale','110px')" onmouseout="unhover()" title="Greyscale  Range: 0-100"></input> 
+    <input type="text" id="blur" placeholder="Blur" autocomplete="off" onkeyup="setEdits()" onmouseover="hover('Blur','155px')" onmouseout="unhover()" title="Blur  Range: 0-∞"></input> 
+    <input type="text" id="brightness" placeholder="Brightness" autocomplete="off" onkeyup="setEdits()" onmouseover="hover('Brightness','200px')" onmouseout="unhover()" title="Brightness  Range: 0-200"></input> 
+    <input type="text" id="saturate" placeholder="Saturation" autocomplete="off" onkeyup="setEdits()" onmouseover="hover('Saturation','245px')" onmouseout="unhover()" title="Saturate  Range: 0-∞"></input> 
+    <input type="text" id="invert" placeholder="Invert" autocomplete="off" onkeyup="setEdits()" onmouseover="hover('Invert','293px')" onmouseout="unhover()" title="Invert  Range: 0-100"></input> 
+    <input type="text" id="contrast" placeholder="Contrast" autocomplete="off" onkeyup="setEdits()" onmouseover="hover('Contrast','339px')" onmouseout="unhover()" title="Contrast  Range: 0-100"></input> 
   </div>
+  
+  <!-- control buttons -->
+  <button class="button">Save image</button>
+  <button class="button">Embed image</button>
+  <button class="button">Preview image</button>
 </div>
+
+<!-- hover text -->
+<button id="hover">Loading...</button>
+
+<!-- image -->
 <img id="img"></img>
 
 <!-- blurred background -->
@@ -150,11 +187,18 @@ var block = document.getElementById("block");
 var notice = document.getElementById("notice");
 var text = document.getElementById("text");
 var img = document.getElementById("img");
+var hoverText = document.getElementById("hover");
 // image and background
 var backBlur = document.getElementById("backBlur");
 //controls
 var urlInput = document.getElementById("url");
-var satInput = document.getElementById("saturation");
+var greyscaleInput = document.getElementById("greyscale");
+var blurInput = document.getElementById("blur");
+var brightnessInput = document.getElementById("brightness");
+var saturateInput = document.getElementById("saturate");
+var invertInput = document.getElementById("invert");
+var contrastInput = document.getElementById("contrast");
+
 
 function clo() {
 block.style.visibility = "hidden";
@@ -180,8 +224,20 @@ function setUrl() {
 img.src = urlInput.value;
 backBlur.src = urlInput.value;
 }
-function setSat() {
-img.style.filter = "grayscale('" + satInput.value + "%')";
+function setEdits() {
+// image filter
+var changes = "grayscale(" + greyscaleInput.value + "%) blur(" + blurInput.value + "px) brightness(" + brightnessInput.value + "%) saturate(" + saturateInput.value + ") invert(" + invertInput.value + "%) contrast(" + contrastInput.value + "%)";
+img.style.filter = changes;
+console.log(changes);
+}
+function hover(text,t) {
+hoverText.style.visibility = "visible";
+hoverText.style.left = "210px";
+hoverText.style.top = t;
+hoverText.innerHTML = text;
+}
+function unhover() {
+hoverText.style.visibility = "hidden";
 }
 </script>
 </body>
