@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -90,8 +89,19 @@ cursor: pointer;
 #controls button {
 width: 180px;
 margin-left: 10px;
-height: 30px;
+height: 35px;
 margin-top: 10px;
+border: 2px solid white;
+border-radius: 2px;
+font-size: 16px;
+color: #5765f2;
+}
+#controls button:hover {
+opacity: 0.8;
+cursor: pointer;
+}
+#controls button span {
+float: left;
 }
 #container {
 width: 180px;
@@ -142,7 +152,11 @@ transition: top 0.3s;
 visibility: hidden;
 position: absolute;
 border: none;
-font-size: 17px;
+font-size: 18px;
+}
+.off {
+opacity: 0.6;
+pointer-events: none;
 }
 </style>
 </head>
@@ -168,9 +182,9 @@ font-size: 17px;
   </div>
   
   <!-- control buttons -->
-  <button class="button">Save image</button>
-  <button class="button">Embed image</button>
-  <button class="button">Preview image</button>
+  <button onclick="imageUrl()">Get image URL</button>
+  <button class="off">Embed image</button>
+  <button onclick="preview()">Preview image</button>
 </div>
 
 <!-- hover text -->
@@ -238,6 +252,17 @@ hoverText.innerHTML = text;
 }
 function unhover() {
 hoverText.style.visibility = "hidden";
+}
+function preview() {
+var changes = "grayscale(" + greyscaleInput.value + "%) blur(" + blurInput.value + "px) brightness(" + brightnessInput.value + "%) saturate(" + saturateInput.value + ") invert(" + invertInput.value + "%) contrast(" + contrastInput.value + "%)";
+var previewCode = "<body style='text-align:center;'><img src='" + urlInput.value + "' style='filter:" + changes + ";'></img></body>";
+myWindow = window.open("myWindow");
+myWindow.document.write(previewCode);
+}
+function imageUrl() {
+var changes = "grayscale(" + greyscaleInput.value + "%) blur(" + blurInput.value + "px) brightness(" + brightnessInput.value + "%) saturate(" + saturateInput.value + ") invert(" + invertInput.value + "%) contrast(" + contrastInput.value + "%)";
+var linK = "Link to your edited photo...<br><input type='text' value='https://lb123658.github.io/photo/image?url=" + urlInput.value + "&filter=" + changes + "'></input>";
+notify(linK);
 }
 </script>
 </body>
