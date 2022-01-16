@@ -183,7 +183,7 @@ pointer-events: none;
   
   <!-- control buttons -->
   <button onclick="imageUrl()">Get image URL</button>
-  <button class="off">Embed image</button>
+  <button onclick="embed()">Embed image</button>
   <button onclick="preview()">Preview image</button>
 </div>
 
@@ -261,9 +261,15 @@ myWindow.document.write(previewCode);
 }
 function imageUrl() {
 var changes = "grayscale(" + greyscaleInput.value + "%) blur(" + blurInput.value + "px) brightness(" + brightnessInput.value + "%) saturate(" + saturateInput.value + ") invert(" + invertInput.value + "%) contrast(" + contrastInput.value + "%)";
-var linK = "Link to your edited photo...<br><input type='text' value='https://lb123658.github.io/photo/image?url=" + urlInput.value + "&filter=" + changes + "'></input>";
+var linK = "Link to your edited photo...<br><input type='text' style='width:88%' value='https://lb123658.github.io/photo/image?url=" + urlInput.value + "&filter=" + changes + "'></input>";
 notify(linK);
 }
+function embed() {
+var changes = "grayscale(" + greyscaleInput.value + "%) blur(" + blurInput.value + "px) brightness(" + brightnessInput.value + "%) saturate(" + saturateInput.value + ") invert(" + invertInput.value + "%) contrast(" + contrastInput.value + "%)";
+var embedCode = "Embed this code for your photo.<br><textarea style='width:90%;min-height:50px;'> <embed src='https://lb123658.github.io/photo/embed?url=" + urlInput.value + "&filter=" + changes + "'></embed></textarea>";
+notify(embedCode);
+}
 </script>
+<script src="https://lb123658.github.io/photo/update.js"></script>
 </body>
 </html>
