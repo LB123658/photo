@@ -37,7 +37,7 @@ background-position: center center;
 <script>
 var img = document.getElementbyId("img");
 img.src = location.search.split("url=")[1].split("&")[0];
-img.style = location.search.split("filter=")[1].replace(/%20/gi, " ");
+img.style.filter = location.search.split("filter=")[1].replace(/%20/gi, " ");
 </script>
 </body>
 </html>
