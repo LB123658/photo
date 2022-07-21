@@ -1,0 +1,22 @@
+{
+	"name":"Photo Editor",
+	"short_name":"Photo Editor",
+	"start_url":"index.html",
+	"display":"standalone",
+	"background_color":"#fff",
+	"theme_color":"#fff",
+	"scope": ".",
+	"description":"A free online way to edit and save photos.",
+	"icons":[
+	{
+	"src":"https://lb123658.github.io/galaxy/favicon.png",					
+	"sizes":"192x192",
+	"type":"image/png"
+	},
+	{
+	"src":"https://lb123658.github.io/galaxy/favicon.png",
+	"sizes":"512x512",
+	"type":"image/png"
+	}
+]
+}
