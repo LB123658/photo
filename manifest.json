@@ -9,12 +9,12 @@
 	"description":"A free online way to edit and save photos.",
 	"icons":[
 	{
-	"src":"https://lb123658.github.io/galaxy/favicon.png",					
+	"src":"images/favicon.png",					
 	"sizes":"192x192",
 	"type":"image/png"
 	},
 	{
-	"src":"https://lb123658.github.io/galaxy/favicon.png",
+	"src":"images/favicon.png",
 	"sizes":"512x512",
 	"type":"image/png"
 	}
