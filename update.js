@@ -1,4 +1,4 @@
-var updated = "no";
+var updated = "yes";
 
 if (window.location.href == ("https://lb123658.github.io/photo/")) {
     console.log("Online version");
