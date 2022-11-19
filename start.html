@@ -5,7 +5,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
-<link rel='icon' href='https://lb123658.github.io/galaxy/favicon.png' type='image/png'/>
+<link rel='icon' href='images/favicon.png' type='image/png'/>
 <link href="https://fonts.googleapis.com/css2?family=Material+Icons" rel="stylesheet">
 <style>
 body {
@@ -105,12 +105,14 @@ window.open("https://lb123658.github.io/photo","_blank");
 }
 var img = document.getElementById("background");
 var x = Math.random()
-if (x > 0 && x < 0.3) {
+if (x > 0 && x < 0.25) {
 img.src = "https://lb123658.github.io/photo/images/city.png";
-} else if (x > 0.3 && x < 0.6) {
+} else if (x > 0.25 && x < 0.5) {
 img.src = "https://lb123658.github.io/photo/images/water.png";
-} else if (x > 0.6 && x < 1) {
+} else if (x > 0.5 && x < 75) {
 img.src = "https://lb123658.github.io/photo/images/coast.png";
+} else {
+img.src = "images/building.png";
 }
 </script>
 </body>
