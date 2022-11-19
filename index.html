@@ -77,6 +77,8 @@ width: 200px;
 height: 100%;
 background: #5765f2;
 color: white;
+overflow-x: hidden;
+overflow-y: auto;
 }
 #controls h2 {
 width: 100%;
@@ -172,7 +174,7 @@ pointer-events: none;
 
 <!-- photo editing part -->
 <div id="controls">
-  <h2 onclick="notify('Last updated: January 15, 2022');">Photo editor</h2>
+  <h2 onclick="notify('Last updated: November 19, 2022');">Photo editor</h2>
   <div id="container">
     <input type="text" id="url" placeholder="Image URL" autocomplete="off" onkeyup="setUrl()" onmouseover="hover('Image URL','65px')" onmouseout="unhover()" title="Image URL"></input>
     <input type="text" id="greyscale" placeholder="Greyscale" autocomplete="off" onkeyup="setEdits()" onmouseover="hover('Greyscale','110px')" onmouseout="unhover()" title="Greyscale  Range: 0-100"></input> 
